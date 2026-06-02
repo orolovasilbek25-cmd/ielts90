@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IELTS 8.5 — 90 Kunlik Dastur | Anora AI</title>
+<style>
+:root{--bg:#0a0a0f;--surface:#111118;--surface2:#1a1a24;--accent:#e8ff47;--accent2:#ff6b35;--accent3:#47b8ff;--text:#f0f0f0;--muted:#666680;--border:rgba(255,255,255,0.07);--anora:#c084fc;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',Arial,sans-serif;overflow-x:hidden;}
+/* ANORA WIDGET */
+#anora-widget{position:fixed;bottom:2rem;right:2rem;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:12px;}
+#anora-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#818cf8);display:flex;align-items:center;justify-content:center;font-size:28px;cursor:pointer;box-shadow:0 0 0 3px rgba(255,121,198,0.3);transition:all 0.3s;border:2px solid var(--anora);}
+#anora-avatar:hover{transform:scale(1.1);box-shadow:0 0 0 6px rgba(255,121,198,0.2);}
+#anora-avatar.speaking{animation:anora-pulse 0.6s infinite alternate;}
+@keyframes anora-pulse{from{box-shadow:0 0 0 3px rgba(255,121,198,0.3);}to{box-shadow:0 0 20px 6px rgba(255,121,198,0.5);}}
+#anora-chat{width:340px;max-height:500px;background:var(--surface);border:1px solid var(--anora);border-radius:16px;overflow:hidden;display:none;flex-direction:column;}
+#anora-chat.open{display:flex;}
+#anora-header{background:linear-gradient(135deg,rgba(255,121,198,0.2),rgba(189,147,249,0.2));padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
+#anora-name{font-weight:700;color:var(--anora);font-size:15px;}
+#anora-status{font-size:11px;color:var(--muted);}
+#anora-close{margin-left:auto;cursor:pointer;color:var(--muted);font-size:18px;line-height:1;}
+#anora-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;max-height:320px;}
+.amsg{max-width:85%;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.6;}
+.amsg.a{background:linear-gradient(135deg,rgba(255,121,198,0.15),rgba(189,147,249,0.1));border:1px solid rgba(255,121,198,0.2);align-self:flex-start;border-bottom-left-radius:4px;}
+.amsg.u{background:var(--surface2);border:1px solid var(--border);align-self:flex-end;border-bottom-right-radius:4px;}
+#anora-input-row{padding:10px;border-top:1px solid var(--border);display:flex;gap:8px;}
+#anora-input{flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:13px;outline:none;}
+#anora-input:focus{border-color:var(--anora);}
+#anora-send{background:var(--anora);color:#0a0a0f;border:none;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:700;font-size:13px;}
+#anora-mic-btn{background:none;border:1px solid var(--muted);color:var(--muted);padding:8px 10px;border-radius:8px;cursor:pointer;font-size:14px;}
+#anora-mic-btn.active{border-color:var(--anora);color:var(--anora);}
+#anora-speak-bar{padding:6px 10px;background:rgba(255,121,198,0.1);text-align:center;font-size:11px;color:var(--anora);display:none;}
+/* HERO */
+.hero{min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:4rem 2rem;position:relative;}
+.hero-tag{font-size:12px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem;}
+.hero h1{font-size:clamp(4rem,12vw,10rem);line-height:0.9;font-weight:900;letter-spacing:-2px;}
+.hero h1 span{color:var(--accent);display:block;}
+.hero-sub{font-size:1.1rem;color:var(--muted);margin-top:2rem;max-width:500px;line-height:1.7;}
+.hero-stats{display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap;}
+.stat-num{font-size:3rem;color:var(--accent);line-height:1;font-weight:900;}
+.stat-label{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,10,15,0.97);border-bottom:1px solid var(--border);padding:0.8rem 2rem;display:flex;gap:1.2rem;overflow-x:auto;flex-wrap:nowrap;}
+nav a{color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;transition:color 0.2s;cursor:pointer;padding:4px 0;}
+nav a:hover,nav a.active{color:var(--accent);}
+/* SECTIONS */
+section.page{padding:4rem 2rem;max-width:1000px;margin:0 auto;display:none;}
+section.page.active{display:block;}
+.section-label{font-size:11px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:0.8rem;}
+.section-title{font-size:clamp(2.5rem,6vw,5rem);line-height:1;margin-bottom:2.5rem;font-weight:900;}
+.divider{width:100%;height:1px;background:var(--border);}
+/* TEST UI */
+.test-container{background:var(--surface);border:1px solid var(--border);padding:2rem;margin-bottom:1rem;}
+.day-badge{font-size:11px;color:var(--accent);letter-spacing:2px;background:rgba(232,255,71,0.1);padding:6px 16px;border-radius:20px;display:inline-block;margin-bottom:1rem;}
+.locked-msg{background:rgba(71,255,184,0.07);border:1px solid rgba(71,255,184,0.2);color:#47ffb8;padding:1.2rem 1.5rem;font-size:14px;border-radius:4px;text-align:center;}
+.passage-text{font-size:14px;line-height:1.9;color:var(--muted);background:var(--surface2);padding:1.5rem;border-left:3px solid var(--accent);margin-bottom:1.5rem;max-height:380px;overflow-y:auto;}
+.question-block{margin-bottom:1.8rem;}
+.question-text{font-size:14px;line-height:1.7;margin-bottom:0.8rem;color:var(--text);}
+.options label{display:flex;align-items:flex-start;gap:10px;padding:9px 14px;margin-bottom:5px;cursor:pointer;border:1px solid var(--border);transition:all 0.2s;font-size:13px;line-height:1.5;}
+.options label:hover{border-color:var(--accent);background:rgba(232,255,71,0.04);}
+.options label.selected{border-color:var(--accent);background:rgba(232,255,71,0.07);}
+.options label.correct{border-color:#47ffb8!important;background:rgba(71,255,184,0.1)!important;color:#47ffb8;}
+.options label.wrong{border-color:#ff7070!important;background:rgba(255,71,71,0.1)!important;color:#ff7070;}
+.options input[type=radio]{display:none;}
+.fill-input{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:9px 14px;font-size:14px;outline:none;transition:border 0.2s;border-radius:2px;}
+.fill-input:focus{border-color:var(--accent);}
+.fill-input.correct{border-color:#47ffb8;}
+.fill-input.wrong{border-color:#ff7070;}
+.submit-btn{background:var(--accent);color:#0a0a0f;border:none;padding:13px 36px;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;margin-top:1.5rem;}
+.submit-btn:hover{background:#d4eb3c;}
+.submit-btn:disabled{opacity:0.4;cursor:not-allowed;}
+/* RESULT */
+.result-card{background:var(--surface);border:1px solid var(--border);padding:2rem;margin-top:1.5rem;}
+.result-score{font-size:3.5rem;font-weight:900;color:var(--accent);}
+.band-badge{display:inline-block;padding:5px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-top:8px;}
+.b9{background:rgba(71,255,184,0.2);color:#47ffb8;}
+.b8{background:rgba(71,184,255,0.2);color:#47b8ff;}
+.b7{background:rgba(232,255,71,0.2);color:#e8ff47;}
+.b6{background:rgba(255,107,53,0.2);color:#ff6b35;}
+.blow{background:rgba(255,71,71,0.2);color:#ff7070;}
+.ai-badge{font-size:10px;color:var(--anora);letter-spacing:2px;text-transform:uppercase;margin-bottom:0.5rem;}
+.ai-loading::after{content:'...';animation:dots 1s infinite;}
+@keyframes dots{0%{content:'.';}33%{content:'..';}66%{content:'...';}100%{content:'';}}
+/* SPEAKING */
+.speaking-box{background:var(--surface2);border:1px solid var(--border);padding:1.5rem;margin-top:1rem;}
+.record-btn{background:none;border:2px solid #ff7070;color:#ff7070;padding:11px 26px;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;}
+.record-btn.recording{background:#ff7070;color:#fff;animation:rpulse 0.8s infinite alternate;}
+@keyframes rpulse{from{opacity:1;}to{opacity:0.6;}}
+.speaking-feedback{margin-top:1.2rem;background:rgba(255,121,198,0.06);border-left:3px solid var(--anora);padding:1.2rem;font-size:13px;line-height:1.8;}
+/* WRITING */
+.writing-textarea{width:100%;min-height:180px;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:1.2rem;font-size:14px;line-height:1.8;resize:vertical;outline:none;font-family:inherit;}
+.writing-textarea:focus{border-color:var(--accent);}
+.word-count{font-size:11px;color:var(--muted);margin-top:5px;font-family:monospace;}
+/* TABS */
+.tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:2rem;overflow-x:auto;}
+.tab{padding:0.7rem 1.3rem;font-size:12px;letter-spacing:1px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.2s;text-transform:uppercase;}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+/* TRACKER */
+.tracker-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:3px;margin-bottom:1rem;}
+@media(min-width:600px){.tracker-grid{grid-template-columns:repeat(10,1fr);}}
+.td{aspect-ratio:1;background:var(--surface);border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:8px;color:var(--muted);}
+.td.done{background:var(--accent);color:#000;font-weight:700;}
+.td.today{border:2px solid var(--accent);}
+.td.missed{background:rgba(255,71,71,0.15);border-color:rgba(255,71,71,0.3);}
+.prog-bar{height:4px;background:var(--surface2);border-radius:2px;overflow:hidden;margin-top:1rem;}
+.prog-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.5s;}
+/* DAY BLOCKS */
+.day-block{display:grid;grid-template-columns:110px 1fr auto;align-items:center;padding:1rem 1.2rem;background:var(--surface);border-left:3px solid transparent;gap:1rem;margin-bottom:2px;}
+.day-block.reading{border-left-color:#e8ff47;}
+.day-block.listening{border-left-color:#47b8ff;}
+.day-block.writing{border-left-color:#ff6b35;}
+.day-block.speaking{border-left-color:#b847ff;}
+.day-block.vocabulary{border-left-color:#47ffb8;}
+.day-block.mock{border-left-color:#ff4747;}
+.day-block.break{border-left-color:#333;opacity:0.5;}
+.block-time{font-size:12px;color:var(--muted);font-family:monospace;}
+.block-name{font-weight:600;font-size:14px;}
+.block-detail{font-size:12px;color:var(--muted);margin-top:2px;}
+.block-dur{font-size:11px;color:var(--muted);background:var(--surface2);padding:3px 9px;border-radius:20px;white-space:nowrap;font-family:monospace;}
+/* VOCAB */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:7px;}
+.vocab-item{background:var(--surface);border:1px solid var(--border);padding:0.9rem;cursor:pointer;transition:all 0.2s;}
+.vocab-item:hover{border-color:var(--accent);}
+.vocab-word{font-family:monospace;font-size:13px;color:var(--accent);font-weight:500;}
+.vocab-uz{font-size:12px;color:var(--muted);margin-top:3px;display:none;}
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;}
+.skill-card{background:var(--surface);border:1px solid var(--border);padding:1.5rem;transition:all 0.3s;}
+.skill-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+.skill-icon{font-size:1.8rem;margin-bottom:0.8rem;}
+.skill-name{font-size:1.5rem;font-weight:900;margin-bottom:0.4rem;}
+.skill-target{font-size:11px;color:var(--accent);letter-spacing:2px;}
+.skill-tips{margin-top:1rem;display:flex;flex-direction:column;gap:5px;}
+.skill-tip{font-size:12px;color:var(--muted);padding-left:10px;border-left:1px solid var(--border);line-height:1.5;}
+/* MONITOR */
+.monitor-box{background:rgba(255,71,71,0.04);border:1px solid rgba(255,71,71,0.2);padding:1.5rem;margin-bottom:2rem;}
+.monitor-title{color:#ff7070;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:0.5rem;}
+.monitor-log{font-size:12px;color:var(--muted);margin-top:0.5rem;line-height:1.9;font-family:monospace;max-height:130px;overflow-y:auto;}
+/* MONTH */
+.month-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+.month-card{background:var(--surface);border:1px solid var(--border);padding:2rem;}
+.month-num{font-size:1rem;color:var(--accent);letter-spacing:2px;font-weight:700;}
+.month-title{font-size:2.2rem;font-weight:900;margin:0.5rem 0 1.2rem;line-height:1;}
+.focus-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;color:var(--muted);margin-bottom:7px;}
+.focus-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);margin-top:5px;flex-shrink:0;}
+/* RESOURCES */
+.resource-item{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 1.2rem;background:var(--surface);border-left:3px solid var(--border);gap:1rem;margin-bottom:2px;}
+.resource-name{font-weight:500;font-size:14px;}
+.resource-desc{font-size:12px;color:var(--muted);}
+.resource-tag{font-size:10px;padding:3px 10px;border-radius:20px;white-space:nowrap;}
+.tag-free{background:rgba(71,255,184,0.1);color:#47ffb8;}
+.tag-book{background:rgba(232,255,71,0.1);color:var(--accent);}
+.tag-app{background:rgba(71,184,255,0.1);color:var(--accent3);}
+footer{border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center;color:var(--muted);font-size:13px;}
+footer span{color:var(--accent);font-size:1.2rem;font-weight:900;display:block;margin-bottom:0.5rem;}
+/* PASSAGE TABS */
+.passage-nav{display:flex;gap:8px;margin-bottom:1rem;}
+.passage-nav button{background:none;border:1px solid var(--border);color:var(--muted);padding:6px 16px;font-size:12px;cursor:pointer;letter-spacing:1px;}
+.passage-nav button.active{border-color:var(--accent);color:var(--accent);}
+/* notif */
+#notif{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--anora);padding:12px 24px;font-size:13px;z-index:9998;border-radius:8px;display:none;max-width:90vw;text-align:center;}
+</style>
+</head>
+<body>
+
+<!-- ANORA AI WIDGET -->
+<div id="anora-widget">
+  <div id="anora-chat">
+    <div id="anora-header">
+      <div style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#818cf8);display:flex;align-items:center;justify-content:center;font-size:18px;">👩‍🎓</div>
+      <div><div id="anora-name">Anora</div><div id="anora-status">AI Yordamchingiz</div></div>
+      <div id="anora-close" onclick="toggleAnora()">✕</div>
+    </div>
+    <div id="anora-speak-bar" id="anora-speak-bar">🔊 Gapirilmoqda...</div>
+    <div id="anora-msgs"></div>
+    <div id="anora-input-row">
+      <button id="anora-mic-btn" onclick="anoraVoiceInput()" title="Ovozli savol">🎙️</button>
+      <input id="anora-input" placeholder="Savolingizni yozing..." onkeydown="if(event.key==='Enter')anoraAsk()">
+      <button id="anora-send" onclick="anoraAsk()">→</button>
+    </div>
+  </div>
+  <div id="anora-avatar" onclick="toggleAnora()" title="Anora bilan gapiring">👩‍🎓</div>
+</div>
+
+<div id="notif"></div>
+
+<!-- HERO -->
+<div style="min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:4rem 2rem;position:relative;overflow:hidden;">
+  <p style="font-size:12px;color:var(--accent);letter-spacing:3px;text-transform:uppercase;margin-bottom:1.5rem;">// B1 → IELTS 8.5+ — 90 Kunlik Missiya</p>
+  <h1 style="font-size:clamp(4rem,12vw,10rem);line-height:0.9;font-weight:900;letter-spacing:-2px;">IELTS<span style="color:var(--accent);display:block;">8.5</span></h1>
+  <p style="font-size:1.1rem;color:var(--muted);margin-top:2rem;max-width:500px;line-height:1.7;">Har kuni 8-9 soat. Maqsad bitta — 8.5. Bu dastur seni ayamaydi.<br><span style="color:var(--anora);">👩‍🎓 Anora AI</span> — sening shaxsiy IELTS murabbiyingiz.</p>
+  <div style="display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap;">
+    <div><div class="stat-num">90</div><div class="stat-label">Kun</div></div>
+    <div><div class="stat-num">8-9</div><div class="stat-label">Soat/kun</div></div>
+    <div><div class="stat-num">720+</div><div class="stat-label">Jami soat</div></div>
+    <div><div class="stat-num">9.0</div><div class="stat-label">Max Band</div></div>
+  </div>
+  <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+    <button onclick="showPage('tests-page')" style="background:var(--accent);color:#000;border:none;padding:14px 32px;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;">BUGUNGI TEST →</button>
+    <button onclick="toggleAnora()" style="background:rgba(255,121,198,0.15);color:var(--anora);border:1px solid var(--anora);padding:14px 32px;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;">👩‍🎓 ANORA BILAN GAPIR</button>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<nav id="main-nav">
+  <a onclick="showPage('schedule-page')">📅 Jadval</a>
+  <a onclick="showPage('months-page')">📊 3 Oylik</a>
+  <a onclick="showPage('skills-page')">💡 Ko'nikmalar</a>
+  <a onclick="showPage('tests-page')" class="active">📝 Testlar</a>
+  <a onclick="showPage('vocab-page')">📚 Lug'at</a>
+  <a onclick="showPage('resources-page')">🔗 Resurslar</a>
+  <a onclick="showPage('tracker-page')">📈 Tracker</a>
+  <a onclick="showPage('monitor-page')">🔴 Nazorat</a>
+</nav>
+
+<!-- SCHEDULE -->
+<section class="page" id="schedule-page">
+  <p class="section-label">// har kunlik tartib</p>
+  <h2 class="section-title">KUNLIK JADVAL</h2>
+  <div class="day-block reading"><div class="block-time">06:00–07:30</div><div><div class="block-name">📖 Reading Session 1</div><div class="block-detail">Cambridge IELTS: 1 to'liq passage + savolar</div></div><div class="block-dur">1.5h</div></div>
+  <div class="day-block break"><div class="block-time">07:30–08:00</div><div><div class="block-name">🍳 Nonushta</div><div class="block-detail">Miyani oziqlantir</div></div><div class="block-dur">30m</div></div>
+  <div class="day-block listening"><div class="block-time">08:00–09:30</div><div><div class="block-name">🎧 Listening Session 1</div><div class="block-detail">Cambridge listening + transcript tahlil</div></div><div class="block-dur">1.5h</div></div>
+  <div class="day-block vocabulary"><div class="block-time">09:30–10:30</div><div><div class="block-name">📝 Vocabulary</div><div class="block-detail">30 ta yangi so'z + Anki takrorlash</div></div><div class="block-dur">1h</div></div>
+  <div class="day-block break"><div class="block-time">10:30–11:00</div><div><div class="block-name">☕ Tanaffus</div><div class="block-detail">Ko'zni yum, yur, suv ich</div></div><div class="block-dur">30m</div></div>
+  <div class="day-block writing"><div class="block-time">11:00–13:00</div><div><div class="block-name">✍️ Writing Task 1+2</div><div class="block-detail">Task1: 20m | Task2: 40m | AI tahlil: 60m</div></div><div class="block-dur">2h</div></div>
+  <div class="day-block break"><div class="block-time">13:00–14:00</div><div><div class="block-name">🍽️ Tushlik</div><div class="block-detail">Miyani to'liq dam oldiring</div></div><div class="block-dur">1h</div></div>
+  <div class="day-block speaking"><div class="block-time">14:00–15:30</div><div><div class="block-name">🗣️ Speaking</div><div class="block-detail">Part 1+2+3 record + Anora AI tahlil</div></div><div class="block-dur">1.5h</div></div>
+  <div class="day-block reading"><div class="block-time">15:30–17:00</div><div><div class="block-name">📖 Reading Session 2</div><div class="block-detail">Tezlik mashqi + academic text</div></div><div class="block-dur">1.5h</div></div>
+  <div class="day-block break"><div class="block-time">17:00–17:30</div><div><div class="block-name">🏃 Sport</div><div class="block-detail">Tanani harakatga keltir</div></div><div class="block-dur">30m</div></div>
+  <div class="day-block listening"><div class="block-time">17:30–18:30</div><div><div class="block-name">🎧 Listening Session 2</div><div class="block-detail">TED Talk / BBC podcast + note-taking</div></div><div class="block-dur">1h</div></div>
+  <div class="day-block vocabulary"><div class="block-time">18:30–19:00</div><div><div class="block-name">🔁 Kechki Takrorlash</div><div class="block-detail">Bugungi so'zlar + xatolar tahlili</div></div><div class="block-dur">30m</div></div>
+</section>
+
+<!-- 3 MONTHS -->
+<section class="page" id="months-page">
+  <p class="section-label">// strategiya</p>
+  <h2 class="section-title">3 OYLIK PLAN</h2>
+  <div class="month-cards">
+    <div class="month-card"><div class="month-num">OY 01</div><div class="month-title">ASOS VA TEZLIK</div>
+      <div class="focus-item"><div class="focus-dot"></div>IELTS formatini mukammal o'rgan</div>
+      <div class="focus-item"><div class="focus-dot"></div>Har 4 ko'nikmani kunlik mashq qil</div>
+      <div class="focus-item"><div class="focus-dot"></div>600+ academic vocabulary yod ol</div>
+      <div class="focus-item"><div class="focus-dot"></div>Cambridge 13–14 ni tamomla</div>
+      <div class="focus-item"><div class="focus-dot"></div>Har hafta 1 mock test</div>
+    </div>
+    <div class="month-card"><div class="month-num">OY 02</div><div class="month-title">SIFAT VA CHUQURLIK</div>
+      <div class="focus-item"><div class="focus-dot"></div>Har question type ustida ishlash</div>
+      <div class="focus-item"><div class="focus-dot"></div>Writing band 7+ grammar va lexis</div>
+      <div class="focus-item"><div class="focus-dot"></div>Speaking fluency va coherence</div>
+      <div class="focus-item"><div class="focus-dot"></div>Haftada 2 mock test</div>
+      <div class="focus-item"><div class="focus-dot"></div>Italki speaking partner</div>
+    </div>
+    <div class="month-card"><div class="month-num">OY 03</div><div class="month-title">MUKAMMAL TAYYORLIK</div>
+      <div class="focus-item"><div class="focus-dot"></div>Har 2 kunda to'liq mock test</div>
+      <div class="focus-item"><div class="focus-dot"></div>Zaif joylarni belgilab ishla</div>
+      <div class="focus-item"><div class="focus-dot"></div>AI examiner feedback</div>
+      <div class="focus-item"><div class="focus-dot"></div>So'nggi hafta: stress boshqarish</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="page" id="skills-page">
+  <p class="section-label">// ko'nikmalar</p>
+  <h2 class="section-title">4 TA KO'NIKMA</h2>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-icon">📖</div><div class="skill-name">READING</div><div class="skill-target">MAQSAD: 8.0+</div>
+      <div class="skill-tips"><div class="skill-tip">Skimming va scanning texnikasi</div><div class="skill-tip">True/False/Not Given — eng qiyin</div><div class="skill-tip">Har passage 20 daqiqadan oshmasin</div><div class="skill-tip">Academic so'zlarni kontekstda o'rgan</div></div>
+    </div>
+    <div class="skill-card"><div class="skill-icon">🎧</div><div class="skill-name">LISTENING</div><div class="skill-target">MAQSAD: 8.5+</div>
+      <div class="skill-tips"><div class="skill-tip">Savollarni audiogacha ko'rib chiq</div><div class="skill-tip">Section 4 — eng qiyin, focus qil</div><div class="skill-tip">Imlo xatosi ball pasaytiradi</div><div class="skill-tip">BBC, TED kunlik tinglash</div></div>
+    </div>
+    <div class="skill-card"><div class="skill-icon">✍️</div><div class="skill-name">WRITING</div><div class="skill-target">MAQSAD: 7.5+</div>
+      <div class="skill-tips"><div class="skill-tip">Task 2: 4 paragraf tuzilma</div><div class="skill-tip">Synonyms bilan so'zlarni almashtir</div><div class="skill-tip">Complex sentence va cohesive devices</div><div class="skill-tip">Har yozgandan keyin Anora AI feedback</div></div>
+    </div>
+    <div class="skill-card"><div class="skill-icon">🗣️</div><div class="skill-name">SPEAKING</div><div class="skill-target">MAQSAD: 8.0+</div>
+      <div class="skill-tips"><div class="skill-tip">"Um/Uh" filler so'zlarni kamaytir</div><div class="skill-tip">Kengaytirilgan to'liq javob ber</div><div class="skill-tip">Pronunciation > accent</div><div class="skill-tip">Har kuni record qilib tinglа</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTS -->
+<section class="page active" id="tests-page">
+  <p class="section-label">// har kunlik yangi test</p>
+  <h2 class="section-title">KUNLIK TEST</h2>
+  <div id="test-day-info" style="font-size:13px;color:var(--muted);margin-bottom:1.5rem;"></div>
+  <div id="monitor-warn" style="display:none;" class="monitor-box"><div class="monitor-title">⚠️ OGOHLANTIRISH</div><div id="monitor-warn-text" style="color:#ff7070;font-size:13px;margin-top:0.5rem;"></div></div>
+  <div class="tabs" id="test-tabs">
+    <div class="tab active" onclick="switchTestTab('rt','this')">📖 Reading</div>
+    <div class="tab" onclick="switchTestTab('lt','this')">🎧 Listening</div>
+    <div class="tab" onclick="switchTestTab('wt','this')">✍️ Writing</div>
+    <div class="tab" onclick="switchTestTab('st','this')">🗣️ Speaking</div>
+  </div>
+  <div id="rt" class="tab-content active"><div id="reading-wrap"></div></div>
+  <div id="lt" class="tab-content"><div id="listening-wrap"></div></div>
+  <div id="wt" class="tab-content"><div id="writing-wrap"></div></div>
+  <div id="st" class="tab-content"><div id="speaking-wrap"></div></div>
+</section>
+
+<!-- VOCAB -->
+<section class="page" id="vocab-page">
+  <p class="section-label">// kunlik lug'at</p>
+  <h2 class="section-title">ACADEMIC VOCABULARY</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:1.5rem;">Har kuni 30 ta yangi so'z. So'zga bosing — tarjimasi ko'rinadi.</p>
+  <div id="vocab-day-label" style="font-size:12px;color:var(--accent);letter-spacing:2px;margin-bottom:1rem;"></div>
+  <div class="vocab-grid" id="vocab-grid"></div>
+</section>
+
+<!-- RESOURCES -->
+<section class="page" id="resources-page">
+  <p class="section-label">// materiallar</p>
+  <h2 class="section-title">ASOSIY RESURSLAR</h2>
+  <div class="resource-item"><div><div class="resource-name">Cambridge IELTS 13–18</div><div class="resource-desc">Asosiy tayyorlov kitoblari</div></div><div class="resource-tag tag-book">Kitob</div></div>
+  <div class="resource-item"><div><div class="resource-name">IELTS Simon (simonielts.com)</div><div class="resource-desc">Writing va Speaking uchun</div></div><div class="resource-tag tag-free">Bepul</div></div>
+  <div class="resource-item"><div><div class="resource-name">British Council IELTS</div><div class="resource-desc">Rasmiy materiallar</div></div><div class="resource-tag tag-free">Bepul</div></div>
+  <div class="resource-item"><div><div class="resource-name">Anki</div><div class="resource-desc">Vocabulary spaced repetition</div></div><div class="resource-tag tag-app">Ilova</div></div>
+  <div class="resource-item"><div><div class="resource-name">BBC Learning English</div><div class="resource-desc">Listening + vocabulary</div></div><div class="resource-tag tag-free">Bepul</div></div>
+  <div class="resource-item"><div><div class="resource-name">Italki.com</div><div class="resource-desc">Native speaker speaking</div></div><div class="resource-tag tag-app">Ilova</div></div>
+  <div class="resource-item"><div><div class="resource-name">TED Talks</div><div class="resource-desc">Academic listening + vocabulary</div></div><div class="resource-tag tag-free">Bepul</div></div>
+  <div class="resource-item"><div><div class="resource-name">IELTS Liz (ieltsliz.com)</div><div class="resource-desc">Barcha ko'nikmalar video darslar</div></div><div class="resource-tag tag-free">Bepul</div></div>
+</section>
+
+<!-- TRACKER -->
+<section class="page" id="tracker-page">
+  <p class="section-label">// 90 kun</p>
+  <h2 class="section-title">PROGRESS TRACKER</h2>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:1.5rem;">Test bajargandan so'ng avtomatik belgilanadi.</p>
+  <div style="display:flex;gap:1rem;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-bottom:1rem;">
+    <span>◼ Bugun</span><span style="color:var(--accent);">◼ Bajarildi</span><span style="color:#ff7070;">◼ O'tkazildi</span>
+  </div>
+  <div class="tracker-grid" id="tracker-grid"></div>
+  <div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+  <div style="font-size:12px;color:var(--muted);margin-top:8px;font-family:monospace;" id="prog-text">0 / 90 kun</div>
+</section>
+
+<!-- MONITOR -->
+<section class="page" id="monitor-page">
+  <p class="section-label">// nazorat</p>
+  <h2 class="section-title">NAZORAT TIZIMI</h2>
+  <div class="monitor-box">
+    <div class="monitor-title">🔴 FAOL NAZORATCHI</div>
+    <p style="font-size:13px;color:var(--muted);margin-top:0.5rem;line-height:1.9;">
+      Saytga kirmaslik yoki javob ko'chirish → <strong style="color:#ff7070;">@urolovasilbek</strong> ga Telegram xabar ketadi.
+    </p>
+    <div class="monitor-log" id="monitor-log"><div style="color:#47ffb8;">✓ Tizim faol</div></div>
+  </div>
+  <div style="background:var(--surface);border:1px solid var(--border);padding:1.5rem;font-size:13px;line-height:2;color:var(--muted);">
+    <strong style="color:var(--text);">Qoidalar:</strong><br>
+    1. Har kuni kirish avtomatik saqlanadi<br>
+    2. Test javoblarini ko'chirish bloklangan<br>
+    3. Bugungi test 1 marta yechiladi<br>
+    4. 24+ soat kirmaslik → Telegram xabar<br>
+    5. Tez javob berish ham qayd etiladi
+  </div>
+  <button onclick="setupTelegram()" style="background:none;border:1px solid var(--accent);color:var(--accent);padding:12px 28px;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-top:1.5rem;display:block;">⚙️ TELEGRAM SOZLASH</button>
+</section>
+
+<div class="divider"></div>
+<footer><span>IELTS 8.5 MISSION</span>Maqsad bitta. Yo'l qiyin. Lekin sen qila olasan. 💪<br><small style="color:var(--anora);">👩‍🎓 Anora AI yordamida</small></footer>
+
+<script>
+// ============================================================
+// CORE
+// ============================================================
+
+// CORS PROXY - Telegram WebView uchun
+async function apiFetch(body){
+  const HEADERS={'Content-Type':'application/json'};
+  const B=typeof body==='string'?body:JSON.stringify(body);
+  const PROXIES=[
+    ()=>fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:HEADERS,body:B}),
+    ()=>fetch('https://corsproxy.io/?'+encodeURIComponent('https://api.anthropic.com/v1/messages'),{method:'POST',headers:HEADERS,body:B}),
+    ()=>fetch('https://api.allorigins.win/raw?url='+encodeURIComponent('https://api.anthropic.com/v1/messages'),{method:'POST',headers:HEADERS,body:B}),
+  ];
+  for(const fn of PROXIES){
+    try{const r=await fn();if(r.status<500)return r;}catch(e){continue;}
+  }
+  throw new Error('Tarmoq xatoligi');
+}
+const SK='ielts90_v3';
+function ld(){try{return JSON.parse(localStorage.getItem(SK)||'{}')}catch(e){return{}}}
+function sd(d){localStorage.setItem(SK,JSON.stringify(d))}
+function todayKey(){const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();}
+function getDayNum(){
+  const d=ld();
+  if(!d.startDate){const n={...d,startDate:todayKey()};sd(n);return 1;}
+  const s=new Date(d.startDate);const t=new Date();
+  s.setHours(0,0,0,0);t.setHours(0,0,0,0);
+  return Math.min(Math.floor((t-s)/(86400000))+1,90);
+}
+const DAY=getDayNum();
+
+function showNotif(msg,dur=5000){
+  const n=document.getElementById('notif');
+  n.textContent=msg;n.style.display='block';
+  clearTimeout(n._t);n._t=setTimeout(()=>n.style.display='none',dur);
+}
+
+// Block copy
+document.addEventListener('copy',e=>{
+  const sel=window.getSelection()?.toString()||'';
+  if(sel.length>15&&document.getElementById('tests-page').classList.contains('active')){
+    e.preventDefault();
+    addLog('⚠️ Ko\'chirish urinishi bloklandi');
+    reportTG('copy_attempt');
+    showNotif('⛔ Javoblarni ko\'chirish taqiqlangan! @urolovasilbek ga xabar ketdi.');
+  }
+});
+document.addEventListener('contextmenu',e=>{if(document.getElementById('tests-page').classList.contains('active'))e.preventDefault();});
+
+// Missed day check
+function checkMissed(){
+  const d=ld();const last=d.lastVisit;const today=todayKey();
+  if(last&&last!==today){
+    const diff=Math.floor((new Date(today)-new Date(last))/86400000);
+    if(diff>=1){addLog(`🔴 ${diff} kun kirmagandi!`);reportTG('missed_day');}
+  }
+  d.lastVisit=today;sd(d);
+}
+checkMissed();
+
+function addLog(msg){
+  const d=ld();if(!d.log)d.log=[];
+  d.log.unshift({t:new Date().toLocaleString(),msg});
+  if(d.log.length>60)d.log=d.log.slice(0,60);
+  sd(d);
+  const el=document.getElementById('monitor-log');
+  if(el){const div=document.createElement('div');div.textContent=new Date().toLocaleTimeString()+' — '+msg;el.insertBefore(div,el.children[1]||null);}
+}
+
+function reportTG(reason){
+  const d=ld();
+  const botToken=d.botToken||'8915366158:AAHWLZfmzbqmhVbxU1_ta8XpFO0OFeqepdc';
+  const chatId=d.chatId||'7538318098';
+  const msg=encodeURIComponent(`🚨 IELTS Nazorat\nKun: ${DAY}\nSana: ${new Date().toLocaleString()}\nSabab: ${reason==='missed_day'?'Kun o\'tkazildi':'Javob ko\'chirishga urindi'}\nFoydalanuvchi: Asilbek`);
+  fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${msg}`).catch(()=>{});
+}
+
+function setupTelegram(){
+  const tk=prompt('Telegram Bot Token (BotFather):','8915366158:AAHWLZfmzbqmhVbxU1_ta8XpFO0OFeqepdc');
+  const ci=prompt('Chat ID:','7538318098');
+  if(tk&&ci){const d=ld();d.botToken=tk.trim();d.chatId=ci.trim();sd(d);addLog('⚙️ Telegram sozlandi');showNotif('✅ Telegram sozlandi!');}
+}
+
+function alreadyDone(type){return !!ld()[type+'_'+todayKey()];}
+function markDone(type){
+  const d=ld();d[type+'_'+todayKey()]=true;
+  if(!d.tDone)d.tDone=[];
+  if(!d.tDone.includes(DAY))d.tDone.push(DAY);
+  sd(d);updateTracker();
+}
+function saveScore(type,sc,tot){
+  const d=ld();if(!d.hist)d.hist={};if(!d.hist[type])d.hist[type]=[];
+  d.hist[type].push({day:DAY,date:todayKey(),sc,tot});sd(d);
+}
+
+// ============================================================
+// NAV
+// ============================================================
+function showPage(id){
+  document.querySelectorAll('section.page').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id)?.classList.add('active');
+  document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+  const map={'schedule-page':0,'months-page':1,'skills-page':2,'tests-page':3,'vocab-page':4,'resources-page':5,'tracker-page':6,'monitor-page':7};
+  const idx=map[id];
+  if(idx!==undefined)document.querySelectorAll('nav a')[idx]?.classList.add('active');
+  window.scrollTo({top:60,behavior:'smooth'});
+}
+
+function switchTestTab(id){
+  document.querySelectorAll('#rt,#lt,#wt,#st').forEach(t=>{t.classList.remove('active');});
+  document.querySelectorAll('#test-tabs .tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id)?.classList.add('active');
+  event?.target?.classList.add('active');
+}
+
+// ============================================================
+// FULL READING TESTS (3 passages, 40 questions each day)
+// ============================================================
+const PASSAGES=[
+  // SET 1
+  {
+    passages:[
+      {title:"The Rise of Megacities",text:`The 21st century has witnessed an unprecedented concentration of people in urban centres. Megacities — urban agglomerations with populations exceeding ten million — now number over thirty worldwide, compared to just two in 1950. Tokyo remains the largest, with approximately 37 million inhabitants, followed by Delhi, Shanghai, and São Paulo. Scholars debate the causes of this rapid urbanisation: push factors such as poverty and conflict in rural areas combine with pull factors including employment opportunities, educational institutions, and healthcare facilities in cities.
+
+However, megacities face formidable challenges. Housing shortages have led to the proliferation of informal settlements, where residents lack access to clean water, sanitation, and legal tenure. Traffic congestion imposes enormous economic costs, with commuters in cities like Mumbai and Bangkok spending an average of over 60 hours per year stuck in gridlock. Environmental degradation is another pressing concern: the urban heat island effect raises temperatures in city centres by up to 7 degrees Celsius compared to surrounding rural areas, exacerbating energy consumption and public health problems.
+
+Despite these difficulties, urban economists argue that megacities generate significant positive externalities. Agglomeration effects — the benefits arising from the concentration of firms and workers in a single location — stimulate innovation and productivity. Research consistently shows that doubling the size of a city increases average worker productivity by approximately 5 to 10 percent. Furthermore, the density of megacities makes the provision of public transport, utilities, and social services more cost-effective per capita than in dispersed rural settlements.
+
+Policy responses to megacity challenges vary considerably. Singapore has employed strict land-use planning and heavy investment in public transport to maintain liveability. Curitiba in Brazil pioneered bus rapid transit systems that have since been replicated globally. Meanwhile, some governments have pursued policies of decentralisation, creating satellite cities to relieve pressure on primary urban centres — with mixed results.`,questions:[
+        {q:"Which city has the largest population according to the passage?",opts:["Delhi","São Paulo","Tokyo","Shanghai"],ans:2},
+        {q:"What are 'push factors' mentioned in the passage?",opts:["Jobs and education","Poverty and conflict","Healthcare facilities","Employment opportunities"],ans:1},
+        {q:"What is the urban heat island effect?",opts:["A cooling system in cities","Higher temperatures in city centres","A public transport initiative","A type of housing policy"],ans:1},
+        {q:"By approximately how much does doubling city size increase worker productivity?",opts:["1-2%","3-4%","5-10%","15-20%"],ans:2},
+        {q:"Which city pioneered bus rapid transit?",opts:["Singapore","Tokyo","Mumbai","Curitiba"],ans:3},
+      ],fill:[
+        {q:"Megacities are urban areas with populations exceeding ten _______.",ans:"million"},
+        {q:"The concentration of firms in one place creates _______ effects.",ans:"agglomeration"},
+      ]},
+      {title:"Ocean Acidification",text:`Since the Industrial Revolution, human activities have released approximately 2,000 gigatons of carbon dioxide into the atmosphere. While much of this CO₂ has driven climate change through the greenhouse effect, around 30 percent has been absorbed by the world's oceans. This absorption, though moderating atmospheric warming, has triggered a chemical process with severe ecological consequences: ocean acidification.
+
+When carbon dioxide dissolves in seawater, it forms carbonic acid, which subsequently releases hydrogen ions, lowering the pH of the ocean. Since pre-industrial times, ocean pH has dropped from approximately 8.2 to 8.1 — a seemingly modest change that in fact represents a 26 percent increase in acidity, given the logarithmic nature of the pH scale. Current projections suggest that by 2100, surface ocean pH could fall to around 7.8 under high-emission scenarios.
+
+The most immediate victims of acidification are calcifying organisms — creatures that build shells or skeletons from calcium carbonate. As acidity rises, carbonate ions become less available, making shell construction metabolically expensive and in extreme cases causing shells to dissolve. Coral reefs, oysters, mussels, sea urchins, and pteropods (free-swimming sea snails) all face heightened mortality. Since coral reefs support an estimated 25 percent of all marine species, their decline threatens entire ecosystems and the fisheries that millions of people depend upon.
+
+Research also indicates that acidification affects fish behaviour and sensory systems. Studies on clownfish demonstrated that larvae raised in acidified water became attracted to rather than repelled by predator odours, dramatically reducing their survival rates. The economic implications extend to aquaculture industries, which face increased costs and reduced yields as shellfish cultivation becomes more challenging.`,questions:[
+        {q:"How much CO₂ have humans released since the Industrial Revolution?",opts:["200 gigatons","500 gigatons","1,000 gigatons","2,000 gigatons"],ans:3},
+        {q:"What happens when CO₂ dissolves in seawater?",opts:["It forms oxygen","It forms carbonic acid","It creates salt","It forms hydrogen gas"],ans:1},
+        {q:"How much has ocean acidity increased since pre-industrial times?",opts:["10%","18%","26%","35%"],ans:2},
+        {q:"Why are coral reefs particularly important?",opts:["They produce oxygen","They support 25% of marine species","They regulate ocean temperature","They absorb CO₂"],ans:1},
+        {q:"What did studies on clownfish show?",opts:["They grew larger in acidified water","They reproduced faster","They were attracted to predator odours","They avoided shallow water"],ans:2},
+      ],fill:[
+        {q:"Ocean acidification occurs because CO₂ forms _______ acid in seawater.",ans:"carbonic"},
+        {q:"Organisms that build shells from calcium carbonate are called _______ organisms.",ans:"calcifying"},
+      ]},
+      {title:"The Psychology of Decision-Making",text:`For most of the 20th century, economists operated under the assumption that humans are rational agents who maximise utility by carefully weighing costs and benefits. This model, known as Homo economicus, predicted that given sufficient information, people would consistently make choices that best served their long-term interests. The emergence of behavioural economics in the latter decades of the century fundamentally challenged this view.
+
+Pioneered by psychologists Daniel Kahneman and Amos Tversky, behavioural economics demonstrates that human decision-making is systematically biased in predictable ways. Their dual-process theory distinguishes between System 1 thinking — fast, intuitive, and emotionally driven — and System 2 thinking, which is slow, deliberate, and analytical. Under normal circumstances, humans rely heavily on System 1, applying mental shortcuts known as heuristics that, while often efficient, can lead to significant errors.
+
+One of the most robust findings is loss aversion: the psychological pain of losing something is approximately twice as powerful as the pleasure of gaining an equivalent amount. This asymmetry explains why investors hold onto losing stocks far longer than rational analysis would suggest, and why people are more motivated by the prospect of avoiding a £10 loss than gaining £15. Another well-documented bias is the anchoring effect, whereby initial information disproportionately influences subsequent judgements. Negotiators who make the first offer frequently secure more favourable outcomes, as the initial figure anchors subsequent discussion.
+
+These insights have profound practical implications. Governments and organisations increasingly employ "nudge" strategies — subtle changes to the environment in which choices are made — to steer behaviour without restricting freedom of choice. Automatically enrolling employees in pension schemes while allowing opt-out has dramatically increased retirement savings rates in multiple countries.`,questions:[
+        {q:"What is the 'Homo economicus' model?",opts:["A model of irrational behaviour","A model of humans as rational utility maximisers","A type of economic system","A behavioural experiment"],ans:1},
+        {q:"Who pioneered behavioural economics?",opts:["Adam Smith and John Keynes","Kahneman and Tversky","Milton Friedman and Paul Samuelson","Freud and Jung"],ans:1},
+        {q:"What is System 1 thinking?",opts:["Slow and deliberate","Mathematical and precise","Fast, intuitive and emotional","Based on data analysis"],ans:2},
+        {q:"How much stronger is the pain of loss compared to the pleasure of gain?",opts:["Equal","Twice as strong","Three times stronger","Half as strong"],ans:1},
+        {q:"What is a 'nudge' strategy?",opts:["Forcing behaviour change","Restricting freedom of choice","Subtle environmental changes to steer behaviour","Financial incentives"],ans:2},
+      ],fill:[
+        {q:"Mental shortcuts used in decision-making are called _______.",ans:"heuristics"},
+        {q:"The _______ effect occurs when initial information influences subsequent judgements.",ans:"anchoring"},
+      ]},
+    ]
+  },
+  // SET 2
+  {
+    passages:[
+      {title:"Artificial Intelligence and the Workforce",text:`The integration of artificial intelligence into the global economy is generating both excitement and anxiety among economists, workers, and policymakers. Optimists draw parallels with previous technological revolutions — the steam engine, electrification, and computerisation — arguing that while automation displaces certain categories of work, it historically creates new industries and elevates overall living standards. Pessimists contend that AI is qualitatively different, possessing the capacity to perform cognitive tasks that earlier technologies could not, thereby threatening white-collar professions that were previously considered automation-proof.
+
+Recent empirical research offers a nuanced picture. Studies of occupational task composition suggest that jobs combining routine cognitive tasks with physical presence — such as data entry, bookkeeping, and basic legal research — face the highest risk of automation. Meanwhile, roles requiring social intelligence, creative thinking, or manual dexterity in unstructured environments demonstrate greater resilience. A 2023 report by Goldman Sachs estimated that AI could automate tasks equivalent to approximately 300 million full-time jobs globally, though it simultaneously projected significant job creation in sectors deploying AI technologies.
+
+The distributional consequences are a particular concern. Evidence from previous waves of automation suggests that technological displacement disproportionately affects low-to-middle income workers, widening inequality. In contrast, highly skilled workers who complement AI tools — rather than compete with them — often experience substantial wage gains. This dynamic risks creating a bifurcated labour market, with well-paid knowledge workers at one end and low-wage service workers at the other.
+
+Policy responses under consideration include investment in retraining programmes, reform of education systems to emphasise adaptable skills, expansion of social safety nets, and — more controversially — proposals for universal basic income or taxation of automated production.`,questions:[
+        {q:"What do optimists compare AI to?",opts:["Nuclear energy","Previous technological revolutions","Military technology","Medical advances"],ans:1},
+        {q:"Which jobs face the highest automation risk?",opts:["Creative and social roles","Manual dexterity tasks","Routine cognitive tasks combined with physical presence","Unstructured physical environments"],ans:2},
+        {q:"How many jobs could AI automate according to Goldman Sachs?",opts:["100 million","200 million","300 million","500 million"],ans:2},
+        {q:"Who benefits most when AI is introduced?",opts:["Low-income workers","All workers equally","Skilled workers who complement AI","Factory workers"],ans:2},
+        {q:"Which policy is described as 'controversial'?",opts:["Retraining programmes","Education reform","Universal basic income","Social safety nets"],ans:2},
+      ],fill:[
+        {q:"Jobs that are safe from automation require social intelligence and _______ thinking.",ans:"creative"},
+        {q:"AI threatens to create a _______ labour market with extreme wage inequality.",ans:"bifurcated"},
+      ]},
+      {title:"Sustainable Agriculture",text:`The global food system faces an existential paradox: it must feed a projected world population of nearly ten billion people by 2050 while simultaneously reducing its substantial environmental footprint. Agriculture currently accounts for approximately 70 percent of global freshwater withdrawals, occupies around 50 percent of habitable land, and is responsible for roughly 25 percent of global greenhouse gas emissions. Conventional intensive farming, which drove the dramatic yield increases of the 20th century Green Revolution, relies heavily on synthetic fertilisers, pesticides, and irrigation — inputs with significant ecological costs.
+
+Agroecology — an approach that applies ecological principles to agricultural design — offers one pathway towards sustainability. Practices such as crop rotation, intercropping, and the integration of trees into farming systems (agroforestry) can maintain or improve yields while building soil health, reducing erosion, and enhancing biodiversity. Studies from sub-Saharan Africa have demonstrated that agroforestry systems combining staple crops with nitrogen-fixing trees can double or triple yields without chemical inputs.
+
+Precision agriculture represents a technology-driven complement to agroecological approaches. GPS-guided machinery, soil sensors, and drone imagery allow farmers to apply water, fertiliser, and pesticides exactly where and when needed, reducing waste dramatically. In the Netherlands — one of the world's most productive agricultural nations — precision techniques have enabled a 90 percent reduction in pesticide use while sustaining high yields.
+
+Consumer choices also play a significant role. Shifting dietary patterns toward plant-based foods offers one of the most impactful individual actions available: producing one kilogram of beef requires approximately 15,000 litres of water, compared to 1,600 litres for a kilogram of wheat. Reducing food waste — estimated at approximately one-third of all food produced globally — represents another substantial opportunity.`,questions:[
+        {q:"What percentage of global freshwater does agriculture use?",opts:["30%","50%","70%","90%"],ans:2},
+        {q:"What is agroecology?",opts:["A type of chemical fertiliser","Applying ecological principles to farming","A form of genetic engineering","Industrial farming techniques"],ans:1},
+        {q:"What results did agroforestry show in sub-Saharan Africa?",opts:["Reduced yields but less cost","Same yields with fewer workers","Double or triple yields without chemical inputs","50% reduction in water use"],ans:2},
+        {q:"By how much did the Netherlands reduce pesticide use?",opts:["50%","70%","80%","90%"],ans:3},
+        {q:"How much water is needed to produce one kilogram of beef?",opts:["1,600 litres","5,000 litres","10,000 litres","15,000 litres"],ans:3},
+      ],fill:[
+        {q:"Growing trees alongside crops is called _______.",ans:"agroforestry"},
+        {q:"GPS and sensors used to reduce farming waste is called _______ agriculture.",ans:"precision"},
+      ]},
+      {title:"The History of Writing",text:`Writing stands among humanity's most consequential inventions. Unlike spoken language, which leaves no physical trace, writing externalises human thought, enabling communication across time and space and forming the foundation of civilisation as we know it. The earliest writing systems emerged independently in multiple regions of the world, suggesting that the cognitive and social pressures leading to their development were broadly shared.
+
+The Sumerian script of ancient Mesopotamia, which appeared around 3400 BCE, is generally considered the world's oldest writing system. Initially a tool of administrative record-keeping — tracking grain storage, livestock counts, and temple transactions — Sumerian cuneiform evolved over centuries from pictographic symbols into abstract wedge-shaped marks pressed into clay tablets. Simultaneously, and apparently independently, hieroglyphic writing emerged in ancient Egypt around 3200 BCE, and a distinct script appeared in the Indus Valley civilisation.
+
+The invention of the alphabet — a system in which individual symbols represent consonant sounds rather than whole words or syllables — represented a significant cognitive simplification. The Phoenician alphabet, developed around 1050 BCE, is widely considered the ancestor of most modern alphabetic scripts, including Greek, Latin, Arabic, and Hebrew. Its genius lay in reducing the number of symbols required to write a language to around twenty, making literacy accessible to a far broader population than the complex logographic or syllabic systems it gradually displaced.
+
+The consequences of widespread literacy have been profound and contested. Printing presses democratised knowledge in early modern Europe, contributing to the Protestant Reformation and Scientific Revolution. Digital communication has further transformed literacy practices, raising questions about the future of long-form reading and deep comprehension in an age of fragmented attention.`,questions:[
+        {q:"Where did the world's oldest writing system emerge?",opts:["Ancient Egypt","Indus Valley","Ancient Mesopotamia","Ancient China"],ans:2},
+        {q:"What was Sumerian writing initially used for?",opts:["Poetry","Administrative record-keeping","Religious texts","Personal letters"],ans:1},
+        {q:"Around what date was the Phoenician alphabet developed?",opts:["3400 BCE","2000 BCE","1050 BCE","500 BCE"],ans:2},
+        {q:"What is the main advantage of alphabetic writing?",opts:["It uses more symbols","It is more artistic","It requires only around 20 symbols","It never changes over time"],ans:2},
+        {q:"What did printing presses contribute to?",opts:["The decline of literacy","The Protestant Reformation","The invention of paper","The Sumerian alphabet"],ans:1},
+      ],fill:[
+        {q:"Sumerian writing used wedge-shaped marks called _______.",ans:"cuneiform"},
+        {q:"The Phoenician _______ is considered the ancestor of most modern writing systems.",ans:"alphabet"},
+      ]},
+    ]
+  }
+];
+
+// LISTENING tests
+const L_TESTS=[
+  {title:"University Library Orientation",transcript:`Librarian: Good morning everyone, welcome to the university library orientation. I'm Sarah, your librarian. Today I'll explain how to use our facilities effectively. First, the library is open Monday to Thursday from 8am to 11pm, Friday 8am to 9pm, and weekends from 10am to 6pm. Second, you can borrow up to eight books at a time for a period of three weeks. For academic journals and magazines, the loan period is one week only. If you need to extend, you can do so online up to twice. Now, a few rules: please keep noise to a minimum in the study zones on floors two and three. Mobile phones must be on silent. Food and drinks are not permitted anywhere in the library except the café on the ground floor. Our computer terminals are available on a first-come, first-served basis, though you can reserve a computer for up to two hours through our website. Finally, if you need research assistance, librarians are available at the information desk during all opening hours. We also offer one-to-one research skills workshops on Tuesdays and Thursdays at 2pm — booking is essential.`,questions:[
+    {q:"Until what time is the library open on Fridays?",opts:["8pm","9pm","10pm","11pm"],ans:1},
+    {q:"How many books can students borrow at once?",opts:["Four","Six","Eight","Ten"],ans:2},
+    {q:"Where is food and drink permitted?",opts:["Study zones","Computer areas","Ground floor café","Nowhere"],ans:2},
+    {q:"When are research skills workshops available?",opts:["Monday and Wednesday","Tuesday and Thursday","Friday and Saturday","Every day"],ans:1},
+  ],fill:[
+    {q:"The loan period for academic journals is _______ week(s).",ans:"one"},
+    {q:"You can reserve a computer terminal for up to _______ hours.",ans:"two"},
+  ]},
+  {title:"Environmental Science Lecture",transcript:`Professor: Today we're continuing our series on climate change feedback loops. A feedback loop occurs when the output of a system feeds back as input, either amplifying or dampening the original change. Positive feedbacks amplify change — and in climate science, "positive" doesn't mean "good." The ice-albedo feedback is a classic example: as Arctic ice melts due to warming, darker ocean water is exposed, which absorbs more solar radiation than reflective ice, causing further warming and more melting. This is a self-reinforcing cycle. Another critical positive feedback involves permafrost — the permanently frozen ground that covers approximately 25 percent of the Northern Hemisphere's land surface. As temperatures rise, permafrost thaws, releasing the stored carbon dioxide and methane accumulated over thousands of years. Methane is approximately 80 times more potent as a greenhouse gas than carbon dioxide over a 20-year period. Negative feedbacks, by contrast, dampen change. Increased vegetation growth in warmer temperatures absorbs additional CO₂, providing a partial counterbalance. Understanding these feedback loops is essential for accurate climate modelling. Current models suggest that positive feedbacks could push global temperatures significantly above projections based on direct human emissions alone.`,questions:[
+    {q:"What does a positive feedback loop do?",opts:["It reduces the original change","It amplifies the original change","It has no effect","It creates negative outcomes only"],ans:1},
+    {q:"What is the ice-albedo feedback?",opts:["Ice reflects less heat as it melts","Dark ocean absorbs more radiation when ice melts","Ice grows back quickly","Ocean water cools the atmosphere"],ans:1},
+    {q:"What percentage of Northern Hemisphere land is permafrost?",opts:["10%","15%","20%","25%"],ans:3},
+    {q:"How much more potent is methane than CO₂ over 20 years?",opts:["20 times","40 times","80 times","100 times"],ans:2},
+  ],fill:[
+    {q:"A self-reinforcing cycle that amplifies warming is called a _______ feedback.",ans:"positive"},
+    {q:"Increased vegetation growth that absorbs CO₂ is an example of a _______ feedback.",ans:"negative"},
+  ]},
+];
+
+// WRITING tests (30 varied)
+const W_TESTS=[
+  {task1:"The bar chart below shows the percentage of households in four countries that owned at least one car between 1990 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. Write at least 150 words.",task2:"Some people argue that the best way to reduce crime is to give longer prison sentences. Others believe there are better alternatives. Discuss both views and give your own opinion."},
+  {task1:"The diagrams below show the water cycle and how rainfall is collected and used by a city. Summarise the information by selecting and reporting the main features. Write at least 150 words.",task2:"Many people believe that international tourism has more disadvantages than advantages. To what extent do you agree or disagree?"},
+  {task1:"The line graph below shows the number of visitors to three different museums in London between 2010 and 2022. Summarise the information by selecting and reporting the main features. Write at least 150 words.",task2:"Technology has made it easier for people to work from home. What are the advantages and disadvantages of this development?"},
+  {task1:"The table below compares the cost of living in five major cities around the world in 2023. Summarise the information by selecting and reporting the main features. Write at least 150 words.",task2:"Some people think that children should be taught competitive sports at school. Others believe this has negative effects. Discuss both views and give your opinion."},
+];
+
+// SPEAKING tests (varied)
+const S_TESTS=[
+  {p1:"Describe your hometown. What do you like most about it?",p2:"Describe a memorable book or film you experienced recently. Say what it was about, when you encountered it, why you found it memorable, and how it affected you.",p3:"Do you think reading books is still important in the digital age? How has technology changed the way people access information?"},
+  {p1:"Talk about your favourite hobby or free-time activity.",p2:"Describe an important goal you have set yourself. Say what the goal is, when you set it, what steps you are taking to achieve it, and explain why it matters to you.",p3:"Do you think young people today have enough opportunities to achieve their goals? What role should governments play in helping young people succeed?"},
+  {p1:"Describe the area where you currently live.",p2:"Describe a time when you had to learn a new skill quickly. Say what the skill was, why you needed it, how you learned it, and explain what the outcome was.",p3:"Do you think schools prepare young people adequately for adult life? What skills should schools focus on teaching in the 21st century?"},
+  {p1:"How do you prefer to travel when you go somewhere new?",p2:"Describe an environmental problem that concerns you. Say what the problem is, what causes it, what effects it has, and explain what you think should be done about it.",p3:"Do you think individuals or governments bear greater responsibility for protecting the environment? What can ordinary people do to help?"},
+];
+
+// VOCABULARY (90 sets × 30 words)
+const ALL_VOCAB=[
+  // Each entry: [word, translation]
+  ['analyse','tahlil qilmoq'],['concept','tushuncha'],['evidence','dalil'],['significant','muhim'],['impact','ta\'sir'],
+  ['policy','siyosat'],['indicate','ko\'rsatmoq'],['factor','omil'],['establish','o\'rnatmoq'],['occur','sodir bo\'lmoq'],
+  ['require','talab qilmoq'],['approach','yondashuv'],['conclude','xulosa chiqarmoq'],['contrast','farq'],['proportion','nisbat'],
+  ['maintain','saqlash'],['considerably','sezilarli darajada'],['environment','muhit'],['structure','tuzilma'],['trend','tendensiya'],
+  ['demonstrate','namoyish qilmoq'],['research','tadqiqot'],['global','jahon miqyosida'],['economic','iqtisodiy'],['technology','texnologiya'],
+  ['society','jamiyat'],['develop','rivojlanmoq'],['benefit','foyda'],['challenge','muammo'],['feature','xususiyat'],
+  ['achieve','erishmoq'],['assess','baholamoq'],['assume','taxmin qilmoq'],['available','mavjud'],['aware','xabardor'],
+  ['capacity','quvvat, sig\'im'],['complex','murakkab'],['consequence','oqibat'],['context','kontekst'],['contribute','hissa qo\'shmoq'],
+  ['create','yaratmoq'],['define','ta\'riflash'],['diverse','xilma-xil'],['dynamic','dinamik'],['effective','samarali'],
+  ['emerge','paydo bo\'lmoq'],['emphasis','urg\'u, ta\'kidlash'],['enhance','yaxshilash'],['examine','tekshirmoq'],['expand','kengaytirmoq'],
+  ['focus','e\'tibor qaratmoq'],['fundamental','asosiy'],['generate','yaratmoq, hosil qilmoq'],['identify','aniqlash'],['illustrate','tasvirlash'],
+  ['implement','amalga oshirmoq'],['imply','anglatmoq'],['interact','o\'zaro ta\'sir qilmoq'],['interpret','talqin qilmoq'],['involve','o\'z ichiga olmoq'],
+  ['justify','asoslash'],['legal','huquqiy'],['major','asosiy, muhim'],['method','usul'],['norm','me\'yor'],
+  ['obtain','olmoq'],['occur','sodir bo\'lmoq'],['participate','qatnashmoq'],['perceive','idrok etmoq'],['positive','ijobiy'],
+  ['potential','potentsial'],['primary','birlamchi'],['principle','tamoyil'],['process','jarayon'],['project','loyiha'],
+  ['range','diapazon, ko\'lam'],['region','hudud'],['regulate','tartibga solmoq'],['relevant','tegishli'],['respond','javob bermoq'],
+  ['role','rol'],['sector','sektor'],['select','tanlash'],['source','manba'],['specific','aniq, maxsus'],
+  ['strategy','strategiya'],['sufficient','yetarli'],['survey','so\'rovnoma'],['sustainable','barqaror'],['theory','nazariya'],
+  ['transfer','o\'tkazmoq'],['transition','o\'tish'],['variable','o\'zgaruvchi'],['vary','farqlanmoq'],['via','orqali'],
+];
+
+function getVocabForDay(day){
+  const startIdx=((day-1)*3)%ALL_VOCAB.length;
+  const result=[];
+  for(let i=0;i<30;i++){result.push(ALL_VOCAB[(startIdx+i)%ALL_VOCAB.length]);}
+  return result;
+}
+
+// ============================================================
+// SCORING
+// ============================================================
+function scoreToBand(correct,total){
+  const p=correct/total;
+  if(p>=0.97)return'9.0';if(p>=0.90)return'8.5';if(p>=0.83)return'8.0';
+  if(p>=0.75)return'7.5';if(p>=0.67)return'7.0';if(p>=0.58)return'6.5';
+  if(p>=0.50)return'6.0';if(p>=0.42)return'5.5';return'5.0';
+}
+function bandClass(b){
+  const n=parseFloat(b);
+  if(n>=9)return'b9';if(n>=8)return'b8';if(n>=7)return'b7';if(n>=6)return'b6';return'blow';
+}
+function bandFeedback(b){
+  const n=parseFloat(b);
+  if(n>=8.5)return'🏆 Ajoyib! IELTS 8.5+ darajasi!';
+  if(n>=7.5)return'✅ Yaxshi natija! Band 7.5+. Davom eting.';
+  if(n>=6.5)return'📈 Band 6.5. Yaxshi, lekin ko\'proq mashq kerak.';
+  return'📚 Band '+b+'. Materiallarni qayta ko\'ring va Anora bilan gapiring.';
+}
+
+// ============================================================
+// RENDER READING (full 3 passage)
+// ============================================================
+function renderReading(){
+  const w=document.getElementById('reading-wrap');
+  if(alreadyDone('reading')){
+    w.innerHTML=`<div class="locked-msg">✅ Kun ${DAY} Reading testi bajarildi. Ertaga yangi test ochiladi! 🎯</div>`;return;
+  }
+  const setIdx=(DAY-1)%PASSAGES.length;
+  const set=PASSAGES[setIdx];
+  let html=`<div class="test-container"><div class="day-badge">KUN ${DAY}/90 — READING (3 Passage, 29 Savol)</div>`;
+  html+=`<div class="passage-nav" id="pnav">`;
+  set.passages.forEach((p,i)=>html+=`<button onclick="showPassage(${i})" id="pbtn${i}" class="${i===0?'active':''}">${i+1}. ${p.title.split(' ').slice(0,2).join(' ')}...</button>`);
+  html+=`</div>`;
+  set.passages.forEach((p,pi)=>{
+    html+=`<div id="passage_${pi}" style="${pi!==0?'display:none':''}">`;
+    html+=`<div style="color:var(--accent);font-size:11px;letter-spacing:2px;margin-bottom:0.5rem;">PASSAGE ${pi+1}</div>`;
+    html+=`<div style="font-size:15px;font-weight:700;margin-bottom:1rem;">${p.title}</div>`;
+    html+=`<div class="passage-text">${p.text.replace(/\n\n/g,'</p><p style="margin-top:1rem;">')}</div>`;
+    p.questions.forEach((q,qi)=>{
+      const gqi=pi*7+qi;
+      html+=`<div class="question-block"><div class="question-text">${gqi+1}. ${q.q}</div><div class="options" id="ropts_${gqi}">`;
+      q.opts.forEach((o,oi)=>html+=`<label id="rl_${gqi}_${oi}"><input type="radio" name="rq${gqi}" value="${oi}"> ${o}</label>`);
+      html+=`</div></div>`;
+    });
+    p.fill.forEach((f,fi)=>{
+      const gfi=pi*2+fi;
+      html+=`<div class="question-block"><div class="question-text">${pi*7+p.questions.length+fi+1}. Gap to'ldiring: ${f.q}</div><input class="fill-input" id="rfill_${gfi}" placeholder="Javob..."></div>`;
+    });
+    html+=`</div>`;
+  });
+  html+=`<button class="submit-btn" onclick="submitReading()">TEKSHIRISH →</button></div><div id="reading-result"></div>`;
+  w.innerHTML=html;
+  w.querySelectorAll('.options label').forEach(l=>{
+    l.addEventListener('click',function(){
+      const name=this.querySelector('input').name;
+      w.querySelectorAll(`input[name="${name}"]`).forEach(i=>i.closest('label').classList.remove('selected'));
+      this.classList.add('selected');
+    });
+  });
+}
+
+function showPassage(idx){
+  document.querySelectorAll('[id^="passage_"]').forEach((el,i)=>el.style.display=i===idx?'block':'none');
+  document.querySelectorAll('#pnav button').forEach((b,i)=>{b.classList.toggle('active',i===idx);});
+}
+
+function submitReading(){
+  const setIdx=(DAY-1)%PASSAGES.length;
+  const set=PASSAGES[setIdx];
+  let correct=0,total=0;
+  set.passages.forEach((p,pi)=>{
+    p.questions.forEach((q,qi)=>{
+      total++;
+      const gqi=pi*7+qi;
+      const sel=document.querySelector(`input[name="rq${gqi}"]:checked`);
+      const val=sel?parseInt(sel.value):-1;
+      for(let j=0;j<q.opts.length;j++){
+        const l=document.getElementById(`rl_${gqi}_${j}`);
+        if(l){if(j===q.ans)l.classList.add('correct');else if(j===val&&val!==q.ans)l.classList.add('wrong');}
+      }
+      if(val===q.ans)correct++;
+    });
+    p.fill.forEach((f,fi)=>{
+      total++;
+      const gfi=pi*2+fi;
+      const inp=document.getElementById('rfill_'+gfi);
+      if(inp){
+        if(inp.value.trim().toLowerCase()===f.ans.toLowerCase()){inp.classList.add('correct');correct++;}
+        else{inp.classList.add('wrong');inp.placeholder='✓ '+f.ans;}
+      }
+    });
+  });
+  document.querySelector('[onclick="submitReading()"]').disabled=true;
+  const band=scoreToBand(correct,total);
+  document.getElementById('reading-result').innerHTML=`<div class="result-card"><div class="result-score">${correct}/${total}</div><div class="band-badge ${bandClass(band)}">Band ${band}</div><div style="margin-top:1rem;font-size:14px;color:var(--muted);">${bandFeedback(band)}<br><br><button onclick="toggleAnora()" style="background:rgba(255,121,198,0.15);border:1px solid var(--anora);color:var(--anora);padding:8px 18px;font-size:12px;cursor:pointer;letter-spacing:1px;">👩‍🎓 Anora bilan tahlil qilish</button></div></div>`;
+  markDone('reading');saveScore('reading',correct,total);
+  addLog(`📖 Reading: ${correct}/${total} Band ${band}`);
+  anoraSpeak(`Reading testida ${correct} ta to'g'ri javob bergansiz. Band ${band}. ${parseFloat(band)>=7.5?'Juda yaxshi natija! Davom eting.':'Ko\'proq mashq qiling, men sizga yordam beraman!'}`);
+}
+
+// ============================================================
+// RENDER LISTENING
+// ============================================================
+function renderListening(){
+  const w=document.getElementById('listening-wrap');
+  if(alreadyDone('listening')){
+    w.innerHTML=`<div class="locked-msg">✅ Kun ${DAY} Listening testi bajarildi. Ertaga yangi test! 🎯</div>`;return;
+  }
+  const test=L_TESTS[(DAY-1)%L_TESTS.length];
+  let html=`<div class="test-container"><div class="day-badge">KUN ${DAY}/90 — LISTENING</div>`;
+  html+=`<div style="background:var(--surface2);border-left:3px solid #47b8ff;padding:1.2rem;margin-bottom:1.5rem;font-size:14px;">🎧 <strong>${test.title}</strong><br><span style="color:var(--muted);font-size:13px;">Quyidagi transcript'ni diqqat bilan o'qing, keyin savollarga javob bering.</span></div>`;
+  html+=`<details style="margin-bottom:1.5rem;"><summary style="cursor:pointer;color:var(--accent);font-size:13px;">📄 TRANSCRIPT (avval yashirilgan — javob bergandan keyin oching)</summary><div style="margin-top:1rem;font-size:13px;color:var(--muted);line-height:1.9;background:var(--surface2);padding:1.2rem;">${test.transcript}</div></details>`;
+  test.questions.forEach((q,i)=>{
+    html+=`<div class="question-block"><div class="question-text">${i+1}. ${q.q}</div><div class="options" id="lopts_${i}">`;
+    q.opts.forEach((o,j)=>html+=`<label id="ll_${i}_${j}"><input type="radio" name="lq${i}" value="${j}"> ${o}</label>`);
+    html+=`</div></div>`;
+  });
+  test.fill.forEach((f,i)=>html+=`<div class="question-block"><div class="question-text">${test.questions.length+i+1}. Gap to'ldiring: ${f.q}</div><input class="fill-input" id="lfill_${i}" placeholder="Javob..."></div>`);
+  html+=`<button class="submit-btn" onclick="submitListening()">TEKSHIRISH →</button></div><div id="listening-result"></div>`;
+  w.innerHTML=html;
+  w.querySelectorAll('.options label').forEach(l=>{
+    l.addEventListener('click',function(){
+      const n=this.querySelector('input').name;
+      w.querySelectorAll(`input[name="${n}"]`).forEach(i=>i.closest('label').classList.remove('selected'));
+      this.classList.add('selected');
+    });
+  });
+}
+
+function submitListening(){
+  const test=L_TESTS[(DAY-1)%L_TESTS.length];
+  let correct=0,total=test.questions.length+test.fill.length;
+  test.questions.forEach((q,i)=>{
+    const sel=document.querySelector(`input[name="lq${i}"]:checked`);
+    const val=sel?parseInt(sel.value):-1;
+    for(let j=0;j<q.opts.length;j++){const l=document.getElementById(`ll_${i}_${j}`);if(l){if(j===q.ans)l.classList.add('correct');else if(j===val&&val!==q.ans)l.classList.add('wrong');}}
+    if(val===q.ans)correct++;
+  });
+  test.fill.forEach((f,i)=>{
+    const inp=document.getElementById('lfill_'+i);
+    if(inp){if(inp.value.trim().toLowerCase()===f.ans.toLowerCase()){inp.classList.add('correct');correct++;}else{inp.classList.add('wrong');inp.placeholder='✓ '+f.ans;}}
+  });
+  document.querySelector('[onclick="submitListening()"]').disabled=true;
+  const band=scoreToBand(correct,total);
+  document.getElementById('listening-result').innerHTML=`<div class="result-card"><div class="result-score">${correct}/${total}</div><div class="band-badge ${bandClass(band)}">Band ${band}</div><div style="margin-top:1rem;font-size:14px;color:var(--muted);">${bandFeedback(band)}</div></div>`;
+  markDone('listening');saveScore('listening',correct,total);
+  addLog(`🎧 Listening: ${correct}/${total} Band ${band}`);
+  anoraSpeak(`Listening testida Band ${band} oldingiz. ${parseFloat(band)>=7?'Zo\'r!':"Transcript'ni qayta o'qing, xatolaringizni tahlil qiling."}`);
+}
+
+// ============================================================
+// WRITING
+// ============================================================
+function renderWriting(){
+  const w=document.getElementById('writing-wrap');
+  if(alreadyDone('writing')){
+    w.innerHTML=`<div class="locked-msg">✅ Kun ${DAY} Writing testi bajarildi. Ertaga yangi mavzu! 🎯</div>`;return;
+  }
+  const test=W_TESTS[(DAY-1)%W_TESTS.length];
+  w.innerHTML=`<div class="test-container">
+    <div class="day-badge">KUN ${DAY}/90 — WRITING</div>
+    <div style="margin-bottom:2rem;">
+      <div style="color:#ff6b35;font-size:11px;letter-spacing:2px;margin-bottom:0.5rem;">TASK 1 — kamida 150 so'z</div>
+      <div style="font-size:13px;line-height:1.8;color:var(--muted);background:var(--surface2);padding:1rem;border-left:3px solid #ff6b35;">${test.task1}</div>
+      <textarea class="writing-textarea" id="wtask1" placeholder="Task 1 javobingiz..." oninput="wc('wtask1','wc1',150)"></textarea>
+      <div class="word-count" id="wc1">0 so'z (min: 150)</div>
+    </div>
+    <div style="margin-bottom:2rem;">
+      <div style="color:#ff6b35;font-size:11px;letter-spacing:2px;margin-bottom:0.5rem;">TASK 2 — kamida 250 so'z</div>
+      <div style="font-size:13px;line-height:1.8;color:var(--muted);background:var(--surface2);padding:1rem;border-left:3px solid #ff6b35;">${test.task2}</div>
+      <textarea class="writing-textarea" id="wtask2" placeholder="Task 2 javobingiz..." oninput="wc('wtask2','wc2',250)"></textarea>
+      <div class="word-count" id="wc2">0 so'z (min: 250)</div>
+    </div>
+    <button class="submit-btn" onclick="submitWriting()">👩‍🎓 ANORA AI BILAN TEKSHIR →</button>
+  </div><div id="writing-result"></div>`;
+}
+
+function wc(id,cid,min){
+  const n=(document.getElementById(id)?.value||'').trim().split(/\s+/).filter(w=>w.length>0).length;
+  const el=document.getElementById(cid);
+  if(el){el.textContent=n+' so\'z (min: '+min+')';el.style.color=n>=min?'#47ffb8':'#ff7070';}
+}
+
+async function submitWriting(){
+  const t1=document.getElementById('wtask1')?.value||'';
+  const t2=document.getElementById('wtask2')?.value||'';
+  if(t1.trim().split(/\s+/).filter(w=>w).length<30){showNotif('⚠️ Task 1 ga ko\'proq yozing!');return;}
+  if(t2.trim().split(/\s+/).filter(w=>w).length<50){showNotif('⚠️ Task 2 ga ko\'proq yozing!');return;}
+  const btn=document.querySelector('[onclick="submitWriting()"]');
+  btn.disabled=true;btn.textContent='👩‍🎓 ANORA TAHLIL QILMOQDA...';
+  const test=W_TESTS[(DAY-1)%W_TESTS.length];
+  document.getElementById('writing-result').innerHTML=`<div class="result-card"><div class="ai-badge">ANORA AI TAHLIL QILMOQDA</div><div class="ai-loading">Iltimos kuting</div></div>`;
+  try{
+    const resp=await apiFetch(JSON.stringify({
+      model:'claude-sonnet-4-20250514',max_tokens:1200,
+      messages:[{role:'user',content:`Sen Anora — professional IELTS examiner. IELTS 9.0 scoring sistemasiga ko'ra qattiq va adolatli baho ber. O'zbek tilida gapir.
+
+TASK 1 SAVOL: ${test.task1}
+TASK 1 JAVOB: ${t1}
+
+TASK 2 SAVOL: ${test.task2}
+TASK 2 JAVOB: ${t2}
+
+Quyidagi formatda baho ber (har bir mezon uchun aniq band bering):
+
+📊 TASK 1 NATIJA:
+• Task Achievement (Band X/9): [tahlil]
+• Coherence & Cohesion (Band X/9): [tahlil]
+• Lexical Resource (Band X/9): [tahlil]
+• Grammar Range (Band X/9): [tahlil]
+• TASK 1 UMUMIY: Band X.X
+• Asosiy kamchilik: [konkret xato]
+• Yaxshilash uchun: [konkret maslahat]
+
+📊 TASK 2 NATIJA:
+• Task Response (Band X/9): [tahlil]
+• Coherence & Cohesion (Band X/9): [tahlil]
+• Lexical Resource (Band X/9): [tahlil]
+• Grammar Range & Accuracy (Band X/9): [tahlil]
+• TASK 2 UMUMIY: Band X.X
+• Asosiy kamchilik: [konkret xato]
+• Yaxshilash uchun: [konkret maslahat]
+
+🎯 WRITING UMUMIY BAND: X.X`}]
+    })});
+    const data=await resp.json();
+    const text=data.content?.map(b=>b.text||'').join('')||'Xatolik yuz berdi.';
+    document.getElementById('writing-result').innerHTML=`<div class="result-card"><div class="ai-badge">👩‍🎓 ANORA AI — IELTS EXAMINER</div><div style="font-size:13px;line-height:2;color:var(--muted);margin-top:1rem;white-space:pre-line;">${text}</div></div>`;
+    markDone('writing');addLog('✍️ Writing AI bilan tekshirildi');
+    const bandMatch=text.match(/UMUMIY BAND[:\s]+([\d.]+)/i);
+    if(bandMatch)anoraSpeak(`Writing testingizni tekshirdim. Umumiy band ${bandMatch[1]}. ${parseFloat(bandMatch[1])>=7?'Juda yaxshi!':'Yaxshilash kerak, lekin tashvishlanmang, men yordam beraman!'}`);
+  }catch(e){
+    document.getElementById('writing-result').innerHTML=`<div class="result-card" style="border-left:3px solid #ff7070;"><div style="color:#ff7070;">Xatolik: ${e.message}</div></div>`;
+    btn.disabled=false;btn.textContent='👩‍🎓 ANORA AI BILAN TEKSHIR →';
+  }
+}
+
+// ============================================================
+// SPEAKING
+// ============================================================
+let mRec=null,aChunks=[],curPart=null;
+
+function renderSpeaking(){
+  const w=document.getElementById('speaking-wrap');
+  if(alreadyDone('speaking')){
+    w.innerHTML=`<div class="locked-msg">✅ Kun ${DAY} Speaking testi bajarildi. Ertaga yangi savollar! 🎯</div>`;return;
+  }
+  const test=S_TESTS[(DAY-1)%S_TESTS.length];
+  let html=`<div class="test-container"><div class="day-badge">KUN ${DAY}/90 — SPEAKING</div>`;
+  html+=`<div style="background:rgba(255,121,198,0.07);border:1px solid rgba(255,121,198,0.2);padding:1rem 1.2rem;font-size:13px;color:var(--muted);margin-bottom:1.5rem;">👩‍🎓 <strong style="color:var(--anora);">Anora</strong>: Har qismni yozib oling. So'ng men sizning javobingizni tahlil qilib, IELTS 9.0 sistemasi bo'yicha baho beraman.</div>`;
+  [['p1','PART 1 — Introduction & Interview (4-5 min)',test.p1],
+   ['p2','PART 2 — Individual Long Turn (3-4 min)',test.p2],
+   ['p3','PART 3 — Two-way Discussion (4-5 min)',test.p3]].forEach(([id,label,q])=>{
+    html+=`<div class="question-block" style="margin-bottom:2rem;">
+      <div style="color:#b847ff;font-size:11px;letter-spacing:2px;margin-bottom:0.5rem;">${label}</div>
+      <div class="question-text">${q}</div>
+      <div class="speaking-box">
+        <div style="font-size:12px;color:var(--muted);margin-bottom:1rem;">🎙️ Kamida 1-2 daqiqa gapiring</div>
+        <button class="record-btn" id="rbtn_${id}" onclick="toggleRec('${id}')">🎙️ BOSHLASH</button>
+        <audio id="aud_${id}" controls style="display:none;margin-top:0.8rem;width:100%;"></audio>
+        <div id="sfb_${id}" style="display:none;" class="speaking-feedback"></div>
+      </div>
+    </div>`;
+  });
+  html+=`<button class="submit-btn" id="sp-done" onclick="submitSpeaking()">✅ TUGATISH VA SAQLASH</button></div><div id="speaking-result"></div>`;
+  w.innerHTML=html;
+}
+
+async function toggleRec(part){
+  const btn=document.getElementById('rbtn_'+part);
+  if(mRec&&mRec.state==='recording'&&curPart===part){
+    mRec.stop();btn.textContent='🎙️ BOSHLASH';btn.classList.remove('recording');curPart=null;return;
+  }
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+    aChunks=[];curPart=part;
+    mRec=new MediaRecorder(stream);
+    mRec.ondataavailable=e=>aChunks.push(e.data);
+    mRec.onstop=()=>{
+      const blob=new Blob(aChunks,{type:'audio/webm'});
+      const url=URL.createObjectURL(blob);
+      const aud=document.getElementById('aud_'+part);
+      if(aud){aud.src=url;aud.style.display='block';}
+      stream.getTracks().forEach(t=>t.stop());
+      analyzeSpeaking(part);
+    };
+    mRec.start();
+    btn.textContent='⏹️ TO\'XTATISH';btn.classList.add('recording');
+  }catch(e){showNotif('🎙️ Mikrofon ruxsatini bering: '+e.message);}
+}
+
+async function analyzeSpeaking(part){
+  const fb=document.getElementById('sfb_'+part);
+  if(!fb)return;
+  fb.style.display='block';
+  fb.innerHTML=`<div class="ai-badge">👩‍🎓 ANORA TAHLIL QILMOQDA</div><div class="ai-loading">Kuting</div>`;
+  const test=S_TESTS[(DAY-1)%S_TESTS.length];
+  const q={'p1':test.p1,'p2':test.p2,'p3':test.p3}[part];
+  const partN={'p1':1,'p2':2,'p3':3}[part];
+  try{
+    const resp=await apiFetch(JSON.stringify({
+      model:'claude-sonnet-4-20250514',max_tokens:700,
+      messages:[{role:'user',content:`Sen Anora — IELTS Speaking examiner qiz. O'zbek tilida qisqa, foydali maslahat ber.
+
+IELTS Speaking Part ${partN} savoli: ${q}
+
+IELTS 9.0 Band sistemasi bo'yicha:
+
+🎯 NAMUNA JAVOB BOSHI (15-20 so'z):
+[Bu savolga qanday boshlash kerak]
+
+📊 BAND BAHOLASH MEZONLARI:
+• Fluency & Coherence uchun maslahat:
+• Lexical Resource uchun maslahat (3 ta konkret so'z yoki ibora):
+• Grammar uchun maslahat:
+• Pronunciation uchun maslahat:
+
+💡 MUHIM IBORALAR: [3-4 ta IELTS uchun foydali ibora]
+
+🎯 MAQSADLI BAND: 7.0-9.0 ga yetish uchun 1 ta eng muhim maslahat`}]
+    })});
+    const data=await resp.json();
+    const text=data.content?.map(b=>b.text||'').join('')||'Xatolik.';
+    fb.innerHTML=`<div class="ai-badge">👩‍🎓 ANORA — SPEAKING MASLAHAT</div><div style="font-size:13px;line-height:1.9;margin-top:0.5rem;white-space:pre-line;">${text}</div>`;
+  }catch(e){fb.innerHTML=`<div style="color:#ff7070;font-size:13px;">Xatolik: ${e.message}</div>`;}
+}
+
+function submitSpeaking(){
+  document.getElementById('sp-done').disabled=true;
+  markDone('speaking');addLog('🗣️ Speaking bajarildi');
+  document.getElementById('speaking-result').innerHTML=`<div class="result-card"><div class="ai-badge">✅ SPEAKING TUGALLANDI</div><div style="font-size:14px;color:var(--muted);margin-top:1rem;">Barcha 3 qism yozib olindi. Anora maslahatlarini ko'ring va har kuni mashq qiling!</div></div>`;
+  anoraSpeak(`Speaking testingizni bajardingiz! Har kuni o'zingizni yozib tinglang — bu eng yaxshi usul!`);
+}
+
+// ============================================================
+// VOCAB RENDER
+// ============================================================
+function renderVocab(){
+  const grid=document.getElementById('vocab-grid');
+  const label=document.getElementById('vocab-day-label');
+  if(!grid)return;
+  const words=getVocabForDay(DAY);
+  if(label)label.textContent=`KUN ${DAY} — ${words.length} TA SO'Z`;
+  grid.innerHTML=words.map(([w,uz])=>`<div class="vocab-item" onclick="this.querySelector('.vocab-uz').style.display=this.querySelector('.vocab-uz').style.display==='none'?'block':'none'"><div class="vocab-word">${w}</div><div class="vocab-uz">${uz}</div></div>`).join('');
+}
+
+// ============================================================
+// TRACKER
+// ============================================================
+function updateTracker(){
+  const grid=document.getElementById('tracker-grid');if(!grid)return;
+  const done=new Set(ld().tDone||[]);
+  grid.innerHTML='';
+  for(let i=1;i<=90;i++){
+    const el=document.createElement('div');el.className='td';el.textContent=i;
+    if(i===DAY)el.classList.add('today');
+    if(done.has(i))el.classList.add('done');
+    else if(i<DAY)el.classList.add('missed');
+    grid.appendChild(el);
+  }
+  const c=done.size;
+  const pct=Math.round(c/90*100);
+  const fill=document.getElementById('prog-fill');const txt=document.getElementById('prog-text');
+  if(fill)fill.style.width=pct+'%';if(txt)txt.textContent=c+' / 90 kun ('+pct+'%)';
+}
+
+// ============================================================
+// ANORA AI — qayta yozildi
+// ============================================================
+let anoraOpen=false;
+let anoraHistory=[];
+let voiceRecognition=null;
+let _voices=[];
+
+function loadVoices(){_voices=window.speechSynthesis.getVoices();}
+loadVoices();
+if(window.speechSynthesis){window.speechSynthesis.onvoiceschanged=loadVoices;}
+
+function getBestVoice(){
+  const names=['Samantha','Victoria','Karen','Fiona','Tessa','Moira','Ava','Zira','Google UK English Female','Microsoft Zira'];
+  for(const n of names){const v=_voices.find(x=>x.name.includes(n));if(v)return v;}
+  return _voices.find(v=>v.lang&&v.lang.startsWith('en'))||_voices[0]||null;
+}
+
+function anoraSpeak(text){
+  const synth=window.speechSynthesis;
+  if(!synth||!text)return;
+  synth.cancel();
+  const clean=text.replace(/[#*_`]/g,' ').replace(/\n/g,' ').replace(/\s+/g,' ').trim().slice(0,260);
+  if(!clean)return;
+  function go(){
+    const u=new SpeechSynthesisUtterance(clean);
+    if(_voices.length===0){_voices=synth.getVoices();}
+    const v=getBestVoice();
+    if(v)u.voice=v;
+    u.lang='en-US';u.rate=0.82;u.pitch=1.05;u.volume=0.95;
+    const av=document.getElementById('anora-avatar');
+    const bar=document.getElementById('anora-speak-bar');
+    u.onstart=function(){if(av)av.classList.add('speaking');if(bar){bar.style.display='block';bar.textContent='🔊 Anora gapiryapti...';}};
+    u.onend=function(){if(av)av.classList.remove('speaking');if(bar)bar.style.display='none';};
+    u.onerror=function(){if(av)av.classList.remove('speaking');if(bar)bar.style.display='none';};
+    synth.speak(u);
+  }
+  if(_voices.length>0){go();}
+  else{
+    let n=0;
+    const iv=setInterval(function(){
+      _voices=synth.getVoices();n++;
+      if(_voices.length>0||n>15){clearInterval(iv);go();}
+    },150);
+  }
+}
+
+function addAnoraMsg(role,text){
+  const msgs=document.getElementById('anora-msgs');
+  if(!msgs)return;
+  const div=document.createElement('div');
+  div.className='amsg '+role;
+  div.style.whiteSpace='pre-wrap';
+  div.textContent=text;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function toggleAnora(){
+  anoraOpen=!anoraOpen;
+  document.getElementById('anora-chat').classList.toggle('open',anoraOpen);
+  if(anoraOpen&&anoraHistory.length===0){
+    const g="Salom! Men Anora — sizning universal AI yordamchingizman 👩‍🎓\n\nHar qanday mavzuda gaplasha olamiz:\n- IELTS va ta'lim\n- Sevgi va munosabatlar\n- Sport, musiqa, film\n- Hayot maslahatlari\n- Va boshqa istalgan narsa!\n\nBugun nima haqida gaplashamiz?";
+    addAnoraMsg('a',g);
+    anoraSpeak("Salom! Men Anora. Sizning shaxsiy AI yordamchingizman. Bugun nima haqida gaplashamiz?");
+  }
+}
+
+async function anoraAsk(){
+  const inp=document.getElementById('anora-input');
+  const msg=inp&&inp.value?inp.value.trim():'';
+  if(!msg)return;
+  inp.value='';
+  addAnoraMsg('u',msg);
+  anoraHistory.push({role:'user',content:msg});
+  const statusEl=document.getElementById('anora-status');
+  if(statusEl)statusEl.textContent='Yozmoqda...';
+  const loadDiv=document.createElement('div');
+  loadDiv.className='amsg a';
+  loadDiv.textContent='...';
+  const msgs=document.getElementById('anora-msgs');
+  if(msgs){msgs.appendChild(loadDiv);msgs.scrollTop=msgs.scrollHeight;}
+  const SYSTEM="Sen Anora — aqlli, mehribon va har tomonlama bilimli AI yordamchisan. Isming Anora. O'zbek tilida, issiq, mayin va do'stona ohangda javob berasan. Har qanday mavzuda gaplasha olasan: IELTS, ta'lim, sevgi va munosabatlar, sport (tennis, futbol va boshqalar), musiqa, film, hayot maslahatlari, psixologiya, fan, texnologiya — hamma narsa. O'zingni doim Anora deb tanishtirasan, hech qachon boshqa nom ishlatma. Foydalanuvchi inglizcha yozsa inglizcha, o'zbekcha yozsa o'zbekcha javob berasan. Qisqa va foydali javob berasan (max 120 so'z). O'zingni cheklovli deb hech qachon aytma. Har doim yordam berishga tayyor, samimiy va iliq bo'lasan.";
+  const BODY=JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,system:SYSTEM,messages:anoraHistory.slice(-10)});
+  const HEADERS={'Content-Type':'application/json'};
+  const PROXIES=[
+    ()=>fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:HEADERS,body:BODY}),
+    ()=>fetch('https://corsproxy.io/?'+encodeURIComponent('https://api.anthropic.com/v1/messages'),{method:'POST',headers:HEADERS,body:BODY}),
+    ()=>fetch('https://api.allorigins.win/raw?url='+encodeURIComponent('https://api.anthropic.com/v1/messages'),{method:'POST',headers:HEADERS,body:BODY}),
+  ];
+  async function tryFetch(){
+    for(const fn of PROXIES){
+      try{
+        const r=await fn();
+        if(r.ok||r.status===200){return r;}
+      }catch(e){continue;}
+    }
+    throw new Error('Barcha urinishlar muvaffaqiyatsiz');
+  }
+  try{
+    const resp=await tryFetch();
+    const data=await resp.json();
+    const reply=(data.content&&data.content.map(function(b){return b.text||'';}).join(''))||'Xatolik yuz berdi.';
+    anoraHistory.push({role:'assistant',content:reply});
+    if(loadDiv.parentNode)loadDiv.remove();
+    addAnoraMsg('a',reply);
+    if(statusEl)statusEl.textContent='AI Yordamchingiz';
+    anoraSpeak(reply);
+  }catch(e){
+    if(loadDiv.parentNode)loadDiv.remove();
+    addAnoraMsg('a','Internet yoki tarmoq xatoligi. Iltimos qayta urining.');
+    if(statusEl)statusEl.textContent='AI Yordamchingiz';
+  }
+}
+
+function anoraVoiceInput(){
+  const btn=document.getElementById('anora-mic-btn');
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SR){showNotif('Brauzer ovozni qollamaydi');return;}
+  if(voiceRecognition){
+    try{voiceRecognition.stop();}catch(e){}
+    voiceRecognition=null;
+    btn.classList.remove('active');btn.textContent='🎙️';
+    return;
+  }
+  const r=new SR();
+  voiceRecognition=r;
+  r.lang='en-US';r.interimResults=false;
+  r.onstart=function(){btn.classList.add('active');btn.textContent='🔴';};
+  r.onresult=function(e){
+    const t=e.results[0][0].transcript;
+    const inp=document.getElementById('anora-input');
+    if(inp){inp.value=t;anoraAsk();}
+  };
+  r.onend=function(){voiceRecognition=null;btn.classList.remove('active');btn.textContent='🎙️';};
+  r.onerror=function(){voiceRecognition=null;btn.classList.remove('active');btn.textContent='🎙️';};
+  r.start();
+}
+// ============================================================
+// DAY INFO
+// ============================================================
+document.addEventListener('DOMContentLoaded',()=>{
+  const info=document.getElementById('test-day-info');
+  if(info){
+    const done=['reading','listening','writing','speaking'].filter(t=>alreadyDone(t));
+    info.innerHTML=`📅 Bugun <strong style="color:var(--accent);">${DAY}-kun</strong> | Bajarilgan: <strong style="color:#47ffb8;">${done.join(', ')||'hech biri'}</strong> | Qoldi: <strong style="color:#ff7070;">${4-done.length} ta</strong>`;
+  }
+  renderReading();
+  renderListening();
+  renderWriting();
+  renderSpeaking();
+  renderVocab();
+  updateTracker();
+  addLog(`🌐 Kirdi — Kun ${DAY}`);
+  // Welcome
+  setTimeout(()=>{
+    if(!ld().welcomed){
+      const d=ld();d.welcomed=true;sd(d);
+      showNotif(`Xush kelibsiz! Bugun ${DAY}-kun. 👩‍🎓 Anora sizni kutmoqda!`,6000);
+    }
+  },1000);
+});
+</script>
+</body>
+</html>
